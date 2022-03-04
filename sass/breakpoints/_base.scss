@@ -132,7 +132,7 @@ site-main
 }
 
 .content-max-width {
-  max-width: 650px;
+  max-width: 100vw;
 }
 
 .border {
@@ -147,7 +147,7 @@ site-main
   opacity: 0;
 }
 
-.backInLeftTrigge {
+.backInLeftTrigger {
   opacity: 0;
 }
 
@@ -664,7 +664,11 @@ footer {
 }
 
 .post, .page {
-  min-width: 100%;
+  max-width: 650px;
+}
+
+.comments-area {
+  max-width: 650px;
 }
 
 /******************************************************************
@@ -682,4 +686,13 @@ archive.php
   & h2 {
     font-weight: bold;
   }
+}
+
+/******************************************************************
+plugin scss
+******************************************************************/
+
+#toc_container {
+  margin: 0 auto;
+  margin-bottom: 15px;
 }

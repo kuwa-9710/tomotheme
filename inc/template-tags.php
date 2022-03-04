@@ -113,7 +113,7 @@ if ( ! function_exists( 'tomotheme_post_thumbnail' ) ) :
 		if ( is_singular() ) :
 			?>
 
-			<div class="post-thumbnail container content-max-width">
+			<div class="post-thumbnail container mb-sm">
 				<?php the_post_thumbnail(); ?>
 			</div><!-- .post-thumbnail -->
 
