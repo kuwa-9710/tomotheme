@@ -1,0 +1,1215 @@
+@charset "UTF-8";
+/*!
+Theme Name: TomoTheme
+Theme URI: http://underscores.me/
+Author: Tomoya Kuwashima
+Author URI: http://underscores.me/
+Description: Description
+Version: 1.0.0
+Tested up to: 5.4
+Requires PHP: 5.6
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: tomotheme
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned.
+
+TomoTheme is based on Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
+*/
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Generic
+	- Normalize
+	- Box sizing
+# Base
+	- Typography
+	- Elements
+	- Links
+	- Forms
+## Layouts
+# Components
+	- Navigation
+	- Posts and pages
+	- Comments
+	- Widgets
+	- Media
+	- Captions
+	- Galleries
+# plugins
+	- Jetpack infinite scroll
+# Utilities
+	- Accessibility
+	- Alignments
+
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Components
+--------------------------------------------------------------*/
+/* Navigation
+--------------------------------------------- */
+.main-navigation {
+  display: block;
+  width: 100%;
+}
+
+.main-navigation ul {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+.main-navigation ul ul {
+  -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+  float: left;
+  position: absolute;
+  top: 100%;
+  left: -999em;
+  z-index: 99999;
+}
+
+.main-navigation ul ul ul {
+  left: -999em;
+  top: 0;
+}
+
+.main-navigation ul ul li:hover > ul,
+.main-navigation ul ul li.focus > ul {
+  display: block;
+  left: auto;
+}
+
+.main-navigation ul ul a {
+  width: 200px;
+}
+
+.main-navigation ul li:hover > ul,
+.main-navigation ul li.focus > ul {
+  left: auto;
+}
+
+.main-navigation li {
+  position: relative;
+}
+
+.main-navigation a {
+  display: block;
+  text-decoration: none;
+}
+
+/* Small menu. */
+.menu-toggle,
+.main-navigation.toggled ul {
+  display: block;
+}
+
+@media screen and (min-width: 37.5em) {
+  .menu-toggle {
+    display: none;
+  }
+  .main-navigation ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+.site-main .comment-navigation, .site-main
+.posts-navigation, .site-main
+.post-navigation {
+  margin: 0 0 1.5em;
+}
+
+.comment-navigation .nav-links,
+.posts-navigation .nav-links,
+.post-navigation .nav-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.comment-navigation .nav-previous,
+.posts-navigation .nav-previous,
+.post-navigation .nav-previous {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 50%;
+          flex: 1 0 50%;
+}
+
+.comment-navigation .nav-next,
+.posts-navigation .nav-next,
+.post-navigation .nav-next {
+  text-align: end;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 50%;
+          flex: 1 0 50%;
+}
+
+/* Posts and pages
+--------------------------------------------- */
+.sticky {
+  display: block;
+}
+
+.post,
+.page {
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+.updated:not(.published) {
+  display: none;
+}
+
+.page-content,
+.entry-content,
+.entry-summary {
+  margin: 0 auto;
+}
+
+.page-links {
+  clear: both;
+  margin: 0 0 1.5em;
+}
+
+/* Comments
+--------------------------------------------- */
+.comment-content a {
+  word-wrap: break-word;
+}
+
+.bypostauthor {
+  display: block;
+}
+
+/* Widgets
+--------------------------------------------- */
+.widget {
+  margin: 0 0 1.5em;
+}
+
+.widget select {
+  max-width: 100%;
+}
+
+/* Media
+--------------------------------------------- */
+.page-content .wp-smiley,
+.entry-content .wp-smiley,
+.comment-content .wp-smiley {
+  border: none;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 0;
+}
+
+/* Make sure logo link wraps around logo image. */
+.custom-logo-link {
+  display: inline-block;
+}
+
+/* Captions
+--------------------------------------------- */
+.wp-caption {
+  margin-bottom: 1.5em;
+  max-width: 100%;
+}
+
+.wp-caption img[class*="wp-image-"] {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wp-caption .wp-caption-text {
+  margin: 0.8075em 0;
+}
+
+.wp-caption-text {
+  text-align: center;
+}
+
+/* Galleries
+--------------------------------------------- */
+.gallery {
+  margin-bottom: 1.5em;
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 1.5em;
+}
+
+.gallery-item {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+
+.gallery-columns-2 {
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+}
+
+.gallery-columns-3 {
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+}
+
+.gallery-columns-4 {
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+}
+
+.gallery-columns-5 {
+  -ms-grid-columns: (1fr)[5];
+      grid-template-columns: repeat(5, 1fr);
+}
+
+.gallery-columns-6 {
+  -ms-grid-columns: (1fr)[6];
+      grid-template-columns: repeat(6, 1fr);
+}
+
+.gallery-columns-7 {
+  -ms-grid-columns: (1fr)[7];
+      grid-template-columns: repeat(7, 1fr);
+}
+
+.gallery-columns-8 {
+  -ms-grid-columns: (1fr)[8];
+      grid-template-columns: repeat(8, 1fr);
+}
+
+.gallery-columns-9 {
+  -ms-grid-columns: (1fr)[9];
+      grid-template-columns: repeat(9, 1fr);
+}
+
+.gallery-caption {
+  display: block;
+}
+
+/******************************************************************
+Stylesheet: ベーススタイル
+******************************************************************/
+html {
+  font-size: 16px;
+  font-family: "Roboto" "Noto Sans JP", sans-serif;
+}
+
+.font-min {
+  font-size: 0.82125rem;
+}
+
+.font-sm {
+  font-size: 17px;
+}
+
+.font-md {
+  font-size: 23px;
+}
+
+.font-lr {
+  font-size: 2.625rem;
+}
+
+.font-lg {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.mb-sm {
+  margin-bottom: 16px !important;
+}
+
+.mb-md {
+  margin-bottom: 25px !important;
+}
+
+.mb-lg {
+  margin-bottom: 80px !important;
+}
+
+.pt-sm {
+  padding-top: 16px;
+}
+
+.pt-md {
+  padding-top: 32px;
+}
+
+.pt-lg {
+  padding-top: 70px !important;
+}
+
+.pb-sm {
+  padding-bottom: 16px !important;
+}
+
+.pb-lg {
+  padding-bottom: 80px !important;
+}
+
+.button-style-none {
+  text-decoration: none;
+  color: #393939;
+}
+
+.button-style-none:visited {
+  color: #393939;
+}
+
+.button-style-none-w {
+  text-decoration: none;
+  color: #fff;
+}
+
+.button-style-none-w:visited {
+  color: #fff;
+}
+
+#page {
+  overflow: hidden;
+}
+
+/******************************************************************
+site-main
+******************************************************************/
+.purple_str {
+  color: #7816f3;
+}
+
+.green_str {
+  color: #14e01c;
+}
+
+.blue_str {
+  color: #1647F3;
+}
+
+.orenge_str {
+  color: #F34B16;
+}
+
+.center {
+  text-align: center;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.block {
+  display: block;
+}
+
+.position_center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.first_button {
+  display: none;
+}
+
+.button {
+  background-color: #393939;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  width: 180px;
+  height: 50px;
+  font-size: 13px;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.content-max-width {
+  max-width: 650px;
+}
+
+.border {
+  border: #F9F9F9;
+}
+
+.fadeInUpTrigger {
+  opacity: 0;
+}
+
+.backInRightTrigger {
+  opacity: 0;
+}
+
+.backInLeftTrigge {
+  opacity: 0;
+}
+
+/******************************************************************
+header
+******************************************************************/
+header {
+  height: 50px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-shadow: 0px 13px 22px -23px #777777;
+          box-shadow: 0px 13px 22px -23px #777777;
+  position: fixed;
+  background-color: #ffffffef;
+  z-index: 999;
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+}
+
+.header_title {
+  height: 50px;
+  padding-left: 10px;
+}
+
+.header_title h1 {
+  height: 50px;
+  line-height: 50px;
+}
+
+.header_title h1 a {
+  text-decoration: none !important;
+  color: #393939 !important;
+  cursor: pointer;
+}
+
+/*ボタン外側※レイアウトによってpositionや形状は適宜変更してください*/
+.openbtn8 {
+  position: relative;
+  /*ボタン内側の基点となるためrelativeを指定*/
+  background: #393939;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+}
+
+.openbtn8 .openbtn-area {
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
+  /*アニメーションの設定*/
+  width: 50px;
+  height: 50px;
+}
+
+.openbtn8 span {
+  display: inline-block;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  position: absolute;
+  left: 14px;
+  height: 3px;
+  border-radius: 2px;
+  background: #fff;
+  width: 45%;
+}
+
+.openbtn8 span:nth-of-type(1) {
+  top: 15px;
+}
+
+.openbtn8 span:nth-of-type(2) {
+  top: 23px;
+}
+
+.openbtn8 span:nth-of-type(3) {
+  top: 31px;
+}
+
+/*activeクラスが付与されると .openbtn-areaが360度回転し、その中の線が回転して×に*/
+.openbtn8.active .openbtn-area {
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+}
+
+.openbtn8.active span:nth-of-type(1) {
+  top: 18px;
+  left: 18px;
+  -webkit-transform: translateY(6px) rotate(-45deg);
+          transform: translateY(6px) rotate(-45deg);
+  width: 30%;
+}
+
+.openbtn8.active span:nth-of-type(2) {
+  opacity: 0;
+}
+
+.openbtn8.active span:nth-of-type(3) {
+  top: 30px;
+  left: 18px;
+  -webkit-transform: translateY(-6px) rotate(45deg);
+          transform: translateY(-6px) rotate(45deg);
+  width: 30%;
+}
+
+.main-navigation {
+  display: none;
+  background-color: #f7f7f7e8;
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+  width: 100vw;
+  position: absolute;
+  z-index: -1;
+  padding-top: 100px;
+}
+
+.main-navigation ul {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.main-navigation ul li {
+  display: block;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.main-navigation ul li a {
+  position: relative;
+  display: block;
+  height: 100%;
+  color: #393939;
+  z-index: 10;
+}
+
+.main-navigation.open-menu ul {
+  display: block;
+}
+
+/******************************************************************
+title
+******************************************************************/
+#title {
+  height: 100vh;
+  padding-top: 100px;
+  background-image: url("tomothmeme/../../images/bg.png");
+  background-position: center;
+  background-size: cover;
+}
+
+#title .title_sub {
+  margin: 0 20px;
+}
+
+.bigImage {
+  max-width: 800px;
+}
+
+/******************************************************************
+apeal
+******************************************************************/
+#apeal {
+  background: -webkit-gradient(linear, left top, right top, from(white), color-stop(50%, white), color-stop(50%, #fcfcfc), to(#fafafa));
+  background: linear-gradient(90deg, white 0%, white 50%, #fcfcfc 50%, #fafafa 100%);
+}
+
+#apeal .apeal_content {
+  max-width: 660px;
+  margin: 0 auto;
+}
+
+#apeal p {
+  color: #6e6e6e;
+}
+
+.name {
+  font-family: "Sacramento", cursive;
+  font-size: 25px;
+  text-align: right;
+  margin-top: 15px;
+}
+
+.apeal_sub {
+  color: #777777;
+}
+
+/******************************************************************
+service
+******************************************************************/
+.section_title {
+  position: relative;
+}
+
+.section_title .back_str {
+  position: absolute;
+  color: rgba(203, 203, 203, 0.42);
+  top: 0;
+  left: 50%;
+  z-index: -1;
+  font-size: 75px;
+  font-weight: bold;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.section_title .path {
+  background-color: #393939;
+  height: 2px;
+  width: 40px;
+  margin: 0 auto;
+}
+
+.section_items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.section_card {
+  background-color: #F9F9F9;
+  padding: 16px 30px;
+  border-radius: 9px;
+  width: 330px;
+  margin: 0 auto;
+  -webkit-box-shadow: 0px 0px 12px -5px #777777;
+          box-shadow: 0px 0px 12px -5px #777777;
+}
+
+.section_card .mac {
+  width: 250px;
+  margin: 0 auto;
+}
+
+.section_card .wordpress {
+  width: 175px;
+  margin: auto;
+}
+
+.section_card .seo {
+  width: 230px;
+  margin: 0 auto;
+}
+
+.section_card .item_title {
+  padding: 0 20px;
+}
+
+.section_card p {
+  padding: 0 20px;
+}
+
+.item_title {
+  height: 55px;
+}
+
+.item_title.seo_title {
+  line-height: 55px;
+}
+
+.image {
+  height: 250px;
+}
+
+/******************************************************************
+news
+******************************************************************/
+#news {
+  background-color: #2e2e2e;
+  -webkit-transform: skew(0deg, -3deg);
+          transform: skew(0deg, -3deg);
+}
+
+#news .news_content {
+  -webkit-transform: skew(0deg, 3deg);
+          transform: skew(0deg, 3deg);
+}
+
+#news .sub_title {
+  color: #c79bff;
+}
+
+#news .main_title {
+  color: #fff;
+}
+
+#news .path {
+  background-color: #fff;
+}
+
+.news_box {
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+.news_box p {
+  margin-bottom: 0;
+}
+
+.news_box .news_item {
+  border-top: 1px dotted #fff;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  max-width: 600px;
+}
+
+.news_box .news_item:last-child {
+  border-bottom: 1px dotted #fff;
+}
+
+.news_date {
+  color: #c79bff;
+}
+
+.news_title {
+  color: #fff;
+  font-weight: normal;
+}
+
+.news_title:hover {
+  color: aqua;
+}
+
+.news_title:visited {
+  color: white;
+}
+
+.news_excerpt {
+  color: #b1b1b1;
+}
+
+/******************************************************************
+feature
+******************************************************************/
+.feature_box {
+  background-color: #F9F9F9;
+  padding: 20px;
+  border-radius: 9px;
+  max-width: 1000px;
+}
+
+.feature_content {
+  width: 345px;
+}
+
+/******************************************************************
+works
+******************************************************************/
+#portfolio {
+  position: relative;
+  background-image: url("tomothmeme/../../images/bg.png");
+  background-position: center;
+  background-size: cover;
+  padding-bottom: 50px;
+}
+
+.thumbnails_box {
+  margin: 0 30px;
+}
+
+.thumbnail_content {
+  border-bottom: 1px dotted #393939;
+  max-width: 370px;
+}
+
+.thumbnail_content .thumbnail {
+  margin-bottom: 8px;
+}
+
+.thumbnail_content .work_title {
+  margin-bottom: 5px;
+  text-decoration: none;
+  color: #393939;
+}
+
+/******************************************************************
+faq
+******************************************************************/
+.accordion-area {
+  list-style: none;
+  width: 96%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.accordion-area li {
+  margin: 10px 0;
+}
+
+.accordion-area section {
+  border: 1px solid #ccc;
+  background-color: #fafafa;
+}
+
+/*アコーディオンタイトル*/
+.title {
+  position: relative;
+  /*+マークの位置基準とするためrelative指定*/
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: normal;
+  padding: 3% 3% 3% 50px;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  margin-bottom: 0;
+}
+
+/*アイコンの＋と×*/
+.title::before,
+.title::after {
+  position: absolute;
+  content: "";
+  width: 15px;
+  height: 2px;
+  background-color: #7816f3;
+}
+
+.title::before {
+  top: 48%;
+  left: 15px;
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+
+.title::after {
+  top: 48%;
+  left: 15px;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+/*　closeというクラスがついたら形状変化　*/
+.title.close::before {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.title.close::after {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+/*アコーディオンで現れるエリア*/
+.box {
+  display: none;
+  /*はじめは非表示*/
+  background: #fff;
+  margin: 0 3% 3% 3%;
+  padding: 3%;
+}
+
+/******************************************************************
+footer
+******************************************************************/
+.site-footer {
+  background-color: #393939;
+  color: #fff;
+}
+
+ol,
+ul {
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.footer_menu li a {
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
+.footer_menu {
+  padding-left: 0;
+}
+
+.footer_title {
+  margin: 5px auto;
+  border-bottom: 1px dashed #fff;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/******************************************************************
+content.php
+******************************************************************/
+.entry-header {
+  position: static;
+  padding-top: 80px;
+}
+
+input .submit {
+  background-color: #393939;
+  color: #fff;
+}
+
+.entry-title {
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.entry-content {
+  font-size: 17px;
+}
+
+.entry-content h2 {
+  padding-bottom: 5px;
+  border-bottom: 2px solid #747474;
+  color: #161530;
+  font-weight: normal;
+}
+
+.entry-content h3 {
+  padding: 10px;
+  border-left: 4px solid #747474;
+  font-weight: normal;
+}
+
+.entry-content h4 {
+  font-weight: normal;
+}
+
+.site-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  margin-top: auto;
+  /* 背景色などは割愛します */
+}
+
+.post, .page {
+  min-width: 100%;
+}
+
+/******************************************************************
+archive.php
+******************************************************************/
+.site-archive {
+  background-image: url("tomothmeme/../../images/bg.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.archive_title h2 {
+  font-weight: bold;
+}
+
+@media (min-width: 480px) {
+  /******************************************************************
+
+Stylesheet: 480px以上(スマホの横向き)のモニタで適用
+
+******************************************************************/
+}
+
+@media (min-width: 600px) {
+  /******************************************************************
+Stylesheet: 600px以上のタブレットやモニタで適用
+******************************************************************/
+  .font-lr {
+    font-size: 52px;
+  }
+  .font-lg {
+    font-size: 82px !important;
+  }
+  .font-sm {
+    font-size: 21px !important;
+  }
+  .button {
+    font-size: 16px;
+  }
+  /******************************************************************
+title
+******************************************************************/
+  #title {
+    height: auto;
+  }
+  .bigImage {
+    width: 550px;
+  }
+  .back_str {
+    font-size: 96px;
+  }
+  .section_title span {
+    font-size: 19px;
+  }
+  /******************************************************************
+news
+******************************************************************/
+  .news_box {
+    max-width: 500px;
+  }
+  /******************************************************************
+news
+******************************************************************/
+  .faq_box {
+    width: 600px;
+  }
+  /******************************************************************
+contente.php
+******************************************************************/
+  .entry-content {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 960px) {
+  /******************************************************************
+
+Stylesheet: 960px以上のモニタで適用
+
+******************************************************************/
+  .font-lr {
+    font-size: 52px;
+  }
+  .font-lg {
+    font-size: 74px !important;
+  }
+  .font-sm {
+    font-size: 20px !important;
+  }
+  .button {
+    font-size: 16px;
+  }
+  .mb-md {
+    margin-bottom: 80px !important;
+  }
+  .pt-lg {
+    padding-top: 105px !important;
+  }
+  /******************************************************************
+header
+******************************************************************/
+  header {
+    height: 70px;
+  }
+  .site-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .header_title {
+    height: 70px;
+  }
+  .header_title h1 {
+    line-height: 70px;
+  }
+  .openbtn8 {
+    display: none;
+  }
+  .main-navigation {
+    display: inline-block;
+    height: 50px;
+    width: auto;
+    background-color: transparent;
+    padding-top: 0;
+    position: static;
+  }
+  .main-navigation li {
+    margin-right: 30px;
+  }
+  .main-navigation li a {
+    font-size: 19px;
+  }
+  /******************************************************************
+title
+******************************************************************/
+  .bigTitle {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin: 0 auto;
+    height: 500px;
+  }
+  .bigImage {
+    width: 900px;
+  }
+  #title .title_sub {
+    margin: 0;
+  }
+  .title_main {
+    text-align: start;
+  }
+  .title_sub {
+    text-align: start;
+  }
+  .first_button {
+    display: block;
+    margin-top: 30px;
+    background-color: #393939;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    width: 180px;
+    height: 50px;
+    font-size: 13px;
+  }
+  .first_button:hover {
+    cursor: pointer;
+  }
+  .first-view {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1280px) {
+  /******************************************************************
+
+Stylesheet: 1280px以上のモニタで適用
+
+******************************************************************/
+}
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,685 @@
+/******************************************************************
+Stylesheet: ベーススタイル
+******************************************************************/
+
+html {
+  font-size: 16px;
+  font-family: "Roboto" "Noto Sans JP", sans-serif;
+}
+
+.font-min {
+  font-size: 0.82125rem; //13px
+}
+.font-sm {
+  font-size: 17px;
+}
+.font-md {
+  font-size: 23px;
+}
+.font-lr {
+  font-size: 2.625rem;
+}
+.font-lg {
+  font-size: 48px;
+  font-weight: bold;
+}
+.mb-sm {
+  margin-bottom: 16px !important;
+}
+.mb-md {
+  margin-bottom: 25px !important;
+}
+.mb-lg {
+  margin-bottom: 80px !important;
+}
+.pt-sm {
+  padding-top: 16px;
+}
+.pt-md {
+  padding-top: 32px;
+}
+.pt-lg {
+  padding-top: 70px !important;
+}
+.pb-sm {
+  padding-bottom: 16px !important;
+}
+.pb-lg {
+  padding-bottom: 80px !important;
+}
+
+.button-style-none {
+  text-decoration: none;
+  color: $cBlack;
+
+  &:visited {
+    color: $cBlack;
+  }
+}
+.button-style-none-w {
+  text-decoration: none;
+  color: $cWhite;
+
+  &:visited {
+    color: $cWhite;
+  }
+}
+
+#page {
+  overflow: hidden;
+}
+
+/******************************************************************
+site-main
+******************************************************************/
+
+.purple_str {
+  color: $cPurple;
+}
+.green_str {
+  color: $cGreen;
+}
+.blue_str {
+  color: $cBlue;
+}
+.orenge_str {
+  color: $cOrenge;
+}
+
+.center {
+  text-align: center;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.block {
+  display: block;
+}
+
+.position_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.first_button {
+  display: none;
+}
+
+.button {
+  background-color: $cBlack;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  width: 180px;
+  height: 50px;
+  font-size: 13px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.content-max-width {
+  max-width: 650px;
+}
+
+.border {
+  border: $cGray;
+}
+
+.fadeInUpTrigger {
+  opacity: 0;
+}
+
+.backInRightTrigger {
+  opacity: 0;
+}
+
+.backInLeftTrigge {
+  opacity: 0;
+}
+
+/******************************************************************
+header
+******************************************************************/
+
+header {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0px 13px 22px -23px #777777;
+  position: fixed;
+  background-color: #ffffffef;
+  z-index: 999;
+  backdrop-filter: blur(4px);
+}
+
+.header_title {
+  height: 50px;
+  padding-left: 10px;
+  & h1 {
+    height: 50px;
+    line-height: 50px;
+
+    & a {
+      text-decoration: none !important;
+      color: $cBlack !important;
+      cursor: pointer;
+    }
+  }
+}
+
+/*ボタン外側※レイアウトによってpositionや形状は適宜変更してください*/
+.openbtn8 {
+  position: relative; /*ボタン内側の基点となるためrelativeを指定*/
+  background: $cBlack;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+
+  & .openbtn-area {
+    transition: all 0.6s; /*アニメーションの設定*/
+    width: 50px;
+    height: 50px;
+  }
+
+  & span {
+    display: inline-block;
+    transition: all 0.4s;
+    position: absolute;
+    left: 14px;
+    height: 3px;
+    border-radius: 2px;
+    background: #fff;
+    width: 45%;
+
+    &:nth-of-type(1) {
+      top: 15px;
+    }
+
+    &:nth-of-type(2) {
+      top: 23px;
+    }
+
+    &:nth-of-type(3) {
+      top: 31px;
+    }
+  }
+}
+
+/*activeクラスが付与されると .openbtn-areaが360度回転し、その中の線が回転して×に*/
+.openbtn8.active {
+  & .openbtn-area {
+    transform: rotate(360deg);
+  }
+
+  & span {
+    &:nth-of-type(1) {
+      top: 18px;
+      left: 18px;
+      transform: translateY(6px) rotate(-45deg);
+      width: 30%;
+    }
+
+    &:nth-of-type(2) {
+      opacity: 0;
+    }
+
+    &:nth-of-type(3) {
+      top: 30px;
+      left: 18px;
+      transform: translateY(-6px) rotate(45deg);
+      width: 30%;
+    }
+  }
+}
+
+.main-navigation {
+  display: none;
+  background-color: #f7f7f7e8;
+  backdrop-filter: blur(4px);
+  width: 100vw;
+  position: absolute;
+  z-index: -1;
+  padding-top: 100px;
+  & ul {
+    padding-left: 0;
+    margin-bottom: 0;
+    & li {
+      display: block;
+      padding: 20px 0;
+      text-align: center;
+
+      & a {
+        position: relative;
+        display: block;
+        height: 100%;
+        color: $cBlack;
+        z-index: 10;
+      }
+    }
+  }
+  &.open-menu {
+    & ul {
+      display: block;
+    }
+  }
+}
+
+/******************************************************************
+title
+******************************************************************/
+
+#title {
+  height: 100vh;
+  padding-top: 100px;
+  background-image: url("tomothmeme/../../images/bg.png");
+  background-position: center;
+  background-size: cover;
+  & .title_sub {
+    margin: 0 20px;
+  }
+}
+
+.bigImage {
+  max-width: 800px;
+}
+
+/******************************************************************
+apeal
+******************************************************************/
+
+#apeal {
+  background: linear-gradient(
+    90deg,
+    rgb(255, 255, 255) 0%,
+    rgb(255, 255, 255) 50%,
+    #fcfcfc 50%,
+    #fafafa 100%
+  );
+
+  & .apeal_content {
+    max-width: 660px;
+    margin: 0 auto;
+  }
+  & p {
+    color: #6e6e6e;
+  }
+}
+
+.name {
+  font-family: "Sacramento", cursive;
+  font-size: 25px;
+  text-align: right;
+  margin-top: 15px;
+}
+
+.apeal_sub {
+  color: #777777;
+}
+
+/******************************************************************
+service
+******************************************************************/
+
+.section_title {
+  position: relative;
+  & .back_str {
+    position: absolute;
+    color: rgba(203, 203, 203, 0.42);
+    top: 0;
+    left: 50%;
+    z-index: -1;
+    font-size: 75px;
+    font-weight: bold;
+    transform: translateX(-50%);
+  }
+
+  & .path {
+    background-color: $cBlack;
+    height: 2px;
+    width: 40px;
+    margin: 0 auto;
+  }
+}
+
+.section_items {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.section_card {
+  background-color: $cGray;
+  padding: 16px 30px;
+  border-radius: 9px;
+  width: 330px;
+  margin: 0 auto;
+  box-shadow: 0px 0px 12px -5px #777777;
+
+  & .mac {
+    width: 250px;
+    margin: 0 auto;
+  }
+  & .wordpress {
+    width: 175px;
+    margin: auto;
+  }
+  & .seo {
+    width: 230px;
+    margin: 0 auto;
+  }
+  & .item_title {
+    padding: 0 20px;
+  }
+  & p {
+    padding: 0 20px;
+  }
+}
+
+.item_title {
+  height: 55px;
+
+  &.seo_title {
+    line-height: 55px;
+  }
+}
+
+.image {
+  height: 250px;
+}
+
+/******************************************************************
+news
+******************************************************************/
+
+#news {
+  background-color: #2e2e2e;
+  transform: skew(0deg, -3deg);
+  & .news_content {
+    transform: skew(0deg, 3deg);
+  }
+  & .sub_title {
+    color: #c79bff;
+  }
+  & .main_title {
+    color: #fff;
+  }
+  & .path {
+    background-color: #fff;
+  }
+}
+
+.news_box {
+  max-width: 350px;
+  margin: 0 auto;
+  & p {
+    margin-bottom: 0;
+  }
+
+  & .news_item {
+    border-top: 1px dotted #fff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    max-width: 600px;
+    &:last-child {
+      border-bottom: 1px dotted #fff;
+    }
+  }
+}
+
+.news_date {
+  color: #c79bff;
+}
+
+.news_title {
+  color: #fff;
+  font-weight: normal;
+  
+  
+
+  &:hover {
+    color: aqua;
+  }
+
+  &:visited {
+    color: white;
+  }
+}
+
+.news_excerpt {
+  color: #b1b1b1;
+}
+
+/******************************************************************
+feature
+******************************************************************/
+.feature_box {
+  background-color: $cGray;
+  padding: 20px;
+  border-radius: 9px;
+  max-width: 1000px;
+}
+
+.feature_content {
+  width: 345px;
+}
+
+/******************************************************************
+works
+******************************************************************/
+
+#portfolio {
+  position: relative;
+  // z-index: -2;
+  background-image: url("tomothmeme/../../images/bg.png");
+  background-position: center;
+  background-size: cover;
+  padding-bottom: 50px;
+}
+.thumbnails_box {
+  margin: 0 30px;
+}
+
+.thumbnail_content {
+  border-bottom: 1px dotted $cBlack;
+  max-width: 370px;
+
+  & .thumbnail {
+    margin-bottom: 8px;
+  }
+
+  & .work_title {
+    margin-bottom: 5px;
+    text-decoration: none;
+    color: $cBlack;
+  }
+}
+
+/******************************************************************
+faq
+******************************************************************/
+
+.accordion-area {
+  list-style: none;
+  width: 96%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.accordion-area li {
+  margin: 10px 0;
+}
+
+.accordion-area section {
+  border: 1px solid #ccc;
+  background-color: #fafafa;
+}
+
+/*アコーディオンタイトル*/
+.title {
+  position: relative; /*+マークの位置基準とするためrelative指定*/
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: normal;
+  padding: 3% 3% 3% 50px;
+  transition: all 0.5s ease;
+  margin-bottom: 0;
+}
+
+/*アイコンの＋と×*/
+.title::before,
+.title::after {
+  position: absolute;
+  content: "";
+  width: 15px;
+  height: 2px;
+  background-color: $cPurple;
+}
+.title::before {
+  top: 48%;
+  left: 15px;
+  transform: rotate(0deg);
+}
+.title::after {
+  top: 48%;
+  left: 15px;
+  transform: rotate(90deg);
+}
+/*　closeというクラスがついたら形状変化　*/
+.title.close::before {
+  transform: rotate(45deg);
+}
+
+.title.close::after {
+  transform: rotate(-45deg);
+}
+
+/*アコーディオンで現れるエリア*/
+.box {
+  display: none; /*はじめは非表示*/
+  background: #fff;
+  margin: 0 3% 3% 3%;
+  padding: 3%;
+}
+
+/******************************************************************
+footer
+******************************************************************/
+.site-footer {
+  background-color: $cBlack;
+  color: #fff;
+}
+
+ol,
+ul {
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.footer_menu li a {
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
+.footer_menu {
+  padding-left: 0;
+}
+
+.footer_title {
+  margin: 5px auto;
+  border-bottom: 1px dashed #fff;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/******************************************************************
+content.php
+******************************************************************/
+
+.entry-header {
+  position: static;
+  padding-top: 80px;
+}
+
+input .submit {
+  background-color: $cBlack;
+  color: $cWhite;
+}
+
+.entry-title {
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.entry-content {
+  font-size: 17px;
+
+  & h2 {
+    padding-bottom: 5px;
+    border-bottom: 2px solid rgb(116, 116, 116);
+    color: rgb(22, 21, 48);
+    font-weight: normal;
+  }
+
+  & h3 {
+    padding: 10px;
+    border-left: 4px solid rgb(116, 116, 116);
+    font-weight: normal;
+  }
+
+  & h4 {
+    font-weight: normal;
+  }
+
+  
+}
+
+.site-main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+footer {
+  margin-top: auto;
+
+  /* 背景色などは割愛します */
+}
+
+.post, .page {
+  min-width: 100%;
+}
+
+/******************************************************************
+archive.php
+******************************************************************/
+
+.site-archive {
+  background-image: url("tomothmeme/../../images/bg.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.archive_title {
+
+  & h2 {
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,125 @@
+/******************************************************************
+
+Stylesheet: 960px以上のモニタで適用
+
+******************************************************************/
+
+.font-lr {
+  font-size: 52px;
+}
+
+.font-lg {
+  font-size: 74px !important;
+}
+
+.font-sm {
+  font-size: 20px !important;
+}
+
+.button {
+  font-size: 16px;
+}
+
+.mb-md {
+  margin-bottom: 80px !important;
+}
+
+.pt-lg {
+  padding-top: 105px !important;
+}
+
+
+
+/******************************************************************
+header
+******************************************************************/
+
+header {
+  height: 70px;
+}
+
+.site-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.header_title {
+  height: 70px;
+  & h1 {
+    line-height: 70px;
+  }
+}
+
+.openbtn8 {
+  display: none;
+}
+
+.main-navigation {
+  display: inline-block;
+  height: 50px;
+  width: auto;
+  background-color: transparent;
+  padding-top: 0;
+  position: static;
+  
+  & li {
+    margin-right: 30px;
+    
+    & a {
+      font-size: 19px;
+    }
+  }
+}
+
+
+
+
+/******************************************************************
+title
+******************************************************************/
+
+.bigTitle {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  height: 500px;
+}
+
+.bigImage {
+    width: 900px;
+}
+
+
+
+#title .title_sub {
+  margin: 0;
+  
+}
+
+.title_main {
+  text-align: start;
+}
+
+.title_sub {
+  text-align: start;
+}
+
+.first_button {
+  display: block;
+  margin-top: 30px;
+  background-color: $cBlack;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  width: 180px;
+  height: 50px;
+  font-size: 13px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.first-view {
+  max-width: 900px;
+  margin: 0 auto;
+}
