@@ -162,7 +162,6 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 .post,
 .page {
   margin: 0 auto;
-  max-width: 900px;
 }
 
 .updated:not(.published) {
@@ -1022,7 +1021,7 @@ footer {
   /* 背景色などは割愛します */
 }
 
-.post, .page {
+article {
   max-width: 650px;
 }
 
@@ -1166,15 +1165,22 @@ header
     padding-top: 0;
     position: static;
   }
-  .main-navigation li {
+  .main-navigation ul li {
     margin-right: 30px;
   }
-  .main-navigation li a {
-    font-size: 19px;
+  .main-navigation ul li a {
+    font-size: 15px;
+    color: #a2a2a2;
   }
   /******************************************************************
 title
 ******************************************************************/
+  #title {
+    height: 700px;
+  }
+  #title .title_sub {
+    margin: 0;
+  }
   .bigTitle {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1186,10 +1192,7 @@ title
     height: 500px;
   }
   .bigImage {
-    width: 900px;
-  }
-  #title .title_sub {
-    margin: 0;
+    width: 1168px;
   }
   .title_main {
     text-align: start;
@@ -1214,6 +1217,9 @@ title
   .first-view {
     max-width: 900px;
     margin: 0 auto;
+  }
+  article {
+    min-width: 650px;
   }
 }
 

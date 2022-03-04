@@ -28,8 +28,6 @@ Stylesheet: 960px以上のモニタで適用
   padding-top: 105px !important;
 }
 
-
-
 /******************************************************************
 header
 ******************************************************************/
@@ -61,22 +59,30 @@ header {
   background-color: transparent;
   padding-top: 0;
   position: static;
-  
-  & li {
-    margin-right: 30px;
-    
-    & a {
-      font-size: 19px;
+
+  & ul {
+    & li {
+      margin-right: 30px;
+
+      & a {
+        font-size: 15px;
+        color: #a2a2a2;
+      }
     }
   }
 }
 
-
-
-
 /******************************************************************
 title
 ******************************************************************/
+
+#title {
+  height: 700px;
+
+  & .title_sub {
+    margin: 0;
+  }
+}
 
 .bigTitle {
   display: flex;
@@ -86,14 +92,7 @@ title
 }
 
 .bigImage {
-    width: 900px;
-}
-
-
-
-#title .title_sub {
-  margin: 0;
-  
+  width: 1168px;
 }
 
 .title_main {
@@ -122,4 +121,8 @@ title
 .first-view {
   max-width: 900px;
   margin: 0 auto;
+}
+
+article {
+  min-width: 650px;
 }
